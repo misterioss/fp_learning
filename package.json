@@ -1,0 +1,23 @@
+{
+  "name": "fp_learning",
+  "version": "1.0.0",
+  "description": "Examples and tasks from https://github.com/MostlyAdequate/mostly-adequate-guide",
+  "main": "chapter1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misterioss/fp_learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misterioss/fp_learning/issues"
+  },
+  "homepage": "https://github.com/misterioss/fp_learning#readme",
+  "devDependencies": {
+    "lodash": "^4.17.4",
+    "ramda": "^0.23.0"
+  }
+}
