@@ -100,4 +100,24 @@ var max = function (xs) {
 max = _.reduce(_keepHighest, -Infinity);
 
 
-console.log(max([1, 2, 3, 4, 5]))
+
+// Bonus 1:
+// ============
+// Wrap array's slice to be functional and curried.
+// //[1, 2, 3].slice(0, 2)
+var slice = undefined;
+
+slice = _.curry((from, to, ary) => ary.slice(from, to))
+
+let sliceFromZero = slice(0);
+let sliceFromZeroToSecond = sliceFromZero(2);
+console.log(sliceFromZeroToSecond([1,2,3]));
+
+// Bonus 2:
+// ============
+// Use slice to define a function "take" that takes n elements from the beginning of the string. Make it curried.
+// // Result for "Something" with n=4 should be "Some"
+var take = undefined;
+take = slice(0,4);
+
+console.log(take("Something"))
