@@ -61,4 +61,23 @@ let map = _.curry(function(f, ary) {
 let sentences = map(splitBySpace);
 
 
-console.log(sentences(["hello worl", "good bye carl"]));
+// Exercise 2
+//==============
+// Refactor to remove all arguments by partially applying the functions.
+
+let filterQs = function(xs) {
+    return _.filter(function(x) {
+        return match(/q/i, x);
+    }, xs);
+};
+
+let match = _.curry((pattern, str) => str.match(pattern))
+
+let filter = _.curry((f, ary) => ary.filter(f));
+
+let matchQ = match(/q/i);
+
+filterQs = filter(matchQ);
+
+
+console.log(filterQs(["hello worlq", "good bye carl", "dsdsds", 'Qq']));
