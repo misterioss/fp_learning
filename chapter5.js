@@ -24,7 +24,8 @@ let reverse2 = (ary) => {
 
 let words = ['jumpkick', 'roundhouse', 'uppercut'];
 let loudLast = compose(shout, compose(head, reverse2));
-let loudLast2 = compose(compose(shout, head), reverse2);
+let loudLast2 = _.compose(head, shout, reverse2);
+
 
 
 console.log(loudLast(words));
