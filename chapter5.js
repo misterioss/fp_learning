@@ -26,12 +26,15 @@ let words = ['jumpkick', 'roundhouse', 'uppercut'];
 let loudLast = compose(shout, compose(head, reverse2));
 let loudLast2 = _.compose(head, shout, reverse2);
 
+// Pointfree
+let snakeCase = function (word) {
+    return word.toLowerCase().replace(/\s+/ig, '_');
+};
 
+let replace = _.curry((regexp, what, str) => str.replace(regexp, what));
+let replaceSpaces = replace(/\s+/ig);
+let replaceSpacesWithSnakes = replaceSpaces("_");
 
-console.log(loudLast(words));
-console.log(loudLast2(words));
+let snakeCasePointfree = compose(replaceSpacesWithSnakes, toUpperCase);
 
-
-
-
-
+console.log(snakeCasePointfree("hello Piotr"))
