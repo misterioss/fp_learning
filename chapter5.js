@@ -37,4 +37,17 @@ let replaceSpacesWithSnakes = replaceSpaces("_");
 
 let snakeCasePointfree = compose(replaceSpacesWithSnakes, toUpperCase);
 
-console.log(snakeCasePointfree("hello Piotr"))
+// Debugging
+const angry = _.compose(exclaim, toUpperCase);
+const map = _.curry((f, ary) => ary.map(f))
+const join = _.curry((str, ary) => ary.join(str));
+
+let latin = _.compose(map(angry), reverse);
+
+const trace = _.curry((tag, x) => {
+    console.log(tag, x);
+    return x;
+})
+
+const dasherize = _.compose(_.join("-"), trace("after map to lower"), _.map(_.toLower), trace("after split"), _.split(" "), trace("after replace"), _.replace(/\s{2,}/ig, " ") );
+console.log(dasherize("The    world   is a     vampire"))
