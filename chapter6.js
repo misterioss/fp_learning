@@ -16,5 +16,5 @@ Maybe.prototype.map = function (f) {
   return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.__value))
 };
 
-var something = Maybe.of("something").map(e => e.toUpperCase()).map(e=>e.split(''))
-console.log(something)
+
+console.log(Maybe.of('Malkovich Malkovich').map(R.match(/a/ig)))
