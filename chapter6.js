@@ -1,17 +1,20 @@
-/**
- * Created by serhii on 24.01.2017.
- */
 var R = require('ramda')
-var Container = function (x) {
-    this.__value = x;
-};
 
-Container.of = function(x) {return new Container(x)};
-
-// (a -> b) -> Container a -> Container b
-Container.prototype.map = function(f) {
-    return Container.of(f(this.__value));
+var Maybe = function (x) {
+  this.__value = x;
 }
 
-console.log(Container.of(2).map(R.add(5)).map(R.add(1500)).__value);
-console.log(Container.of("hotdogs"));
+Maybe.of = function (x) {
+  return new Maybe(x);
+};
+
+Maybe.prototype.isNothing = function () {
+  return (this.__value === null || this.__value === undefined);
+};
+
+Maybe.prototype.map = function (f) {
+  return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.__value))
+};
+
+var something = Maybe.of("something").map(e => e.toUpperCase()).map(e=>e.split(''))
+console.log(something)
